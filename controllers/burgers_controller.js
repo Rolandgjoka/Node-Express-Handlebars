@@ -1,15 +1,11 @@
-// Routes 
-var express = require("express");
 
-// Use router method off of express object to control routes in the application
+var expres = require("express");
+
 var router = express.Router();
 
-// Import the model (burger.js) to use its database functions.
 var burger = require("../models/burger.js");
 
-// Create all our routes and set up logic within those routes where required.
-// This is the JS object/data which is getting passed to view engine (in this case, handlebars)
-// Handlebars renders html file index.handlebars and rendering the object burgers
+
 router.get("/", function (req, res) {
     burger.selectAll(function (data) {
         var hbsObject = {
@@ -33,7 +29,6 @@ router.post("/burgers", function (req, res) {
 router.put("/burgers/:id", function (req, res) {
     var condition = "id = " + req.params.id;
 
-    // console.log("condition", condition);
 
     burger.updateOne({
         devoured: true
@@ -43,5 +38,4 @@ router.put("/burgers/:id", function (req, res) {
     });
 });
 
-// Export routes for server.js to use.
 module.exports = router;
