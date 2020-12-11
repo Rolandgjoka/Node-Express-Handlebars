@@ -1,7 +1,9 @@
+// Routes 
+var express = require("express");
 
-var expres = require("express");
 
 var router = express.Router();
+
 
 var burger = require("../models/burger.js");
 
@@ -38,4 +40,5 @@ router.put("/burgers/:id", function (req, res) {
     });
 });
 
+// Export routes for server.js to use.
 module.exports = router;
